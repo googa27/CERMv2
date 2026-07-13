@@ -1,0 +1,220 @@
+{
+  "schema_version": "1.0.0",
+  "repository": {
+    "owner": "googa27",
+    "name": "CERMv2",
+    "profile": "legacy",
+    "status": "Fork / Legacy",
+    "enforcement": "Advisory",
+    "project": "https://github.com/users/googa27/projects/24",
+    "issue": "https://github.com/googa27/arxiv-implementation-lab/issues/22",
+    "upstream": "https://github.com/hayleealyssalynanderson/CERMv2.git"
+  },
+  "preservation": {
+    "archival_notice": "Historical/reference preservation only; not maintained, production-ready, secure, or operationally validated.",
+    "supersession_notice": "Prefer canonical upstream and maintained libraries for new work; this repository preserves attribution and evidence.",
+    "revival_gates": [
+      "Identify canonical upstream commit and reconcile fork divergence before runtime edits.",
+      "Resolve license/provenance for code, CSV files, pickle/dump artifacts, and any derived portfolio data.",
+      "Create a minimal reproducible public-synthetic dataset and oracle numerical checks before changing algorithms.",
+      "Pin supported Python/dependency versions and add real tests before claiming active maintenance.",
+      "Perform Streamlit/input/security review before any network-exposed demo."
+    ],
+    "provenance": "upstream fork; preserve upstream compatibility and attribution",
+    "license_warning": "No root LICENSE detected in this snapshot; verify upstream/subtree licensing before reuse or redistribution.",
+    "security_warning": "Legacy Streamlit/notebook code is not hardened; do not expose it to untrusted networks or inputs without a security review.",
+    "private_data_warning": "Do not add private loan books, counterparty identifiers, secrets, credentials, or non-public portfolio data.",
+    "data_posture": "Legacy local CSV/pickle/dump files only; loan, climate, and portfolio data require source, license, classification, and lineage review before reuse."
+  },
+  "architecture": {
+    "style": "evolutionary, contract-first, advisory-preservation",
+    "layers": [],
+    "import_boundaries": {
+      "authority": "Inherited layout plus this preservation contract; no new internal coupling without revival",
+      "forbidden": [],
+      "cycle_policy": "No new cycles; inherited structure is preserved unless a separate low-risk revival/refactor is approved"
+    },
+    "public_api_paths": [],
+    "extension_points": [
+      "documented public scripts/notebooks when present",
+      "typed APIs and deterministic CLIs only after revival",
+      "adapters behind explicit protocols"
+    ]
+  },
+  "source_layout": {
+    "python_rules_applicable": false,
+    "python_source_roots": [],
+    "metadata_names": [
+      "ARCHITECTURE.md",
+      "ARCHITECTURE.yaml",
+      "README.md",
+      "__init__.py",
+      "py.typed"
+    ],
+    "allowed_non_python_files": [],
+    "future_rule": "Any revived Python package uses a src layout unless an evidence-backed exception is approved."
+  },
+  "limits": {
+    "max_immediate_runtime_entries": 10,
+    "max_python_module_lines": 500,
+    "measurement": "physical UTF-8 lines; immediate runtime .py files excluding __init__.py plus runtime package directories"
+  },
+  "libraries": {
+    "selection_policy": "Prefer well-maintained libraries with maintenance/API/license evidence and adapter boundaries before custom implementation.",
+    "decisions": [
+      {
+        "capability": "numerical/dataframe runtime",
+        "selected": [
+          "NumPy",
+          "SciPy",
+          "pandas"
+        ],
+        "alternatives": [
+          "Custom array/dataframe implementations"
+        ],
+        "evidence": "Project #24 issue, docs/ARCHITECTURE.md, repository files, and cited research anchors",
+        "adapter_boundary": "Keep adapters at script/API boundaries; validate numerical behavior against reference cases.",
+        "custom_code_reason": "Only domain semantics, adapters, composition, or genuinely missing algorithms with oracle/reference tests are acceptable after revival."
+      },
+      {
+        "capability": "interactive UI",
+        "selected": [
+          "Streamlit after version/security review"
+        ],
+        "alternatives": [
+          "Ad hoc web server or notebook-only UI"
+        ],
+        "evidence": "Project #24 issue, docs/ARCHITECTURE.md, repository files, and cited research anchors",
+        "adapter_boundary": "UI must remain read-only/demo until data custody and threat model are approved.",
+        "custom_code_reason": "Only domain semantics, adapters, composition, or genuinely missing algorithms with oracle/reference tests are acceptable after revival."
+      },
+      {
+        "capability": "architecture bootstrap",
+        "selected": [
+          "Python standard-library json over JSON-subset YAML"
+        ],
+        "alternatives": [
+          "Hand-written YAML parser"
+        ],
+        "evidence": "Project #24 issue, docs/ARCHITECTURE.md, repository files, and cited research anchors",
+        "adapter_boundary": "Dependency-free advisory gate only.",
+        "custom_code_reason": "Only domain semantics, adapters, composition, or genuinely missing algorithms with oracle/reference tests are acceptable after revival."
+      }
+    ]
+  },
+  "interfaces": {
+    "ai": {
+      "primary_agent": "Hermes Agent",
+      "context_file": "AGENTS.md",
+      "interaction": "Minimal AGENTS with upstream-sync and safe-run guidance; no repo-specific MCP/plugin.",
+      "capability_discovery": "AGENTS.md plus scripts/check_portfolio_architecture.py; no maintained runtime capability is claimed while archived.",
+      "skills": "Use/update a repo or class-level Hermes skill only for recurring non-trivial workflows after stable local contracts exist.",
+      "plugin_mcp_policy": "Deferred unless formal revival proves stable contracts, measured multi-client/tool interoperability, least privilege, and separate verification.",
+      "declared_entrypoints": [],
+      "mutation_safety": "Mutation is explicit, least-privileged, human-reviewable, and independently verified; no autonomous public side effects by default."
+    },
+    "human": {
+      "interaction": "Current Streamlit/notebook entry points may be documented as historical examples; typed package/API redesign only after independent revival.",
+      "public_api_paths": [],
+      "notebook_policy": "Deterministic public-synthetic notebooks/examples only after revival; legacy notebooks/scripts remain historical.",
+      "dunder_policy": "Only lawful Python/NumPy/IPython protocols with algebraic/parity tests; named methods own policy, effects, diagnostics, I/O, and ambiguity.",
+      "dunder_plan": [
+        "No API/dunder redesign in Project #24 preservation."
+      ],
+      "forbidden_dunders": [
+        "Ambiguous arithmetic/order",
+        "Stateful or effectful operators",
+        "Lossy implicit conversion",
+        "Dunders that hide policy, I/O, diagnostics, or failure modes"
+      ]
+    }
+  },
+  "tests": {
+    "required_suites": [
+      "unit",
+      "integration",
+      "e2e",
+      "architecture"
+    ],
+    "commands": {
+      "setup": "No supported automated setup is currently declared; treat this as a revival gate.",
+      "test": "No executable inherited runtime test command is currently declared; run the architecture checker only.",
+      "lint": "No lint command is currently declared.",
+      "architecture": "python scripts/check_portfolio_architecture.py"
+    },
+    "ci_workflow": "advisory; see blocking_ci exception",
+    "mirror_source": "Only after revival and stable source boundaries."
+  },
+  "data": {
+    "consumes_data": true,
+    "architecture": "Legacy local CSV/pickle/dump files only; loan, climate, and portfolio data require source, license, classification, and lineage review before reuse.",
+    "required_controls": [
+      "source registry",
+      "typed contracts",
+      "classification",
+      "lineage",
+      "quality",
+      "freshness/vintage/effective time",
+      "content identity",
+      "replay",
+      "validation",
+      "license/provenance review"
+    ],
+    "core_repositories": {
+      "PDP": "No core coupling unless formally revived.",
+      "financial_problem_formulations": "No core coupling unless formally revived.",
+      "ui_and_artifacts": "No core coupling unless formally revived."
+    },
+    "source_registry_plan": [
+      "Identify canonical upstream commit and reconcile fork divergence before runtime edits.",
+      "Resolve license/provenance for code, CSV files, pickle/dump artifacts, and any derived portfolio data.",
+      "Create a minimal reproducible public-synthetic dataset and oracle numerical checks before changing algorithms.",
+      "Pin supported Python/dependency versions and add real tests before claiming active maintenance.",
+      "Perform Streamlit/input/security review before any network-exposed demo."
+    ],
+    "flow": "source registry -> typed acquisition -> immutable Bronze -> canonical Silver -> curated Gold/features -> formulation/model -> governed output -> read-only UI/API/notebook",
+    "storage_and_replay": "Immutable raw/content-addressed inputs and public-synthetic fixtures are required before maintained data behavior is claimed.",
+    "quality_and_lineage": "Validate schema, grain, units, classification, lineage, freshness, license, and content identity before consumption; fail closed on missing evidence."
+  },
+  "governance": {
+    "architecture_source": "docs/ARCHITECTURE.yaml",
+    "update_rule": "Update README notice, AGENTS, contract, prose docs, tests, AI/human interfaces, and public API claims in the same change.",
+    "checker": "scripts/check_portfolio_architecture.py",
+    "required_documents": [
+      "README.md",
+      "AGENTS.md",
+      "docs/ARCHITECTURE.yaml",
+      "docs/ARCHITECTURE.md"
+    ],
+    "exception_policy": "exact scope, reason, owner, risk, accepted ceiling, and refactoring trigger; no-growth ratchet"
+  },
+  "exceptions": [
+    {
+      "rule": "python_source_layout",
+      "path": "src/",
+      "reason": "Legacy/fork/hardware preservation does not force a source-layout migration in an advisory documentation change.",
+      "owner": "googa27 Portfolio Project #24",
+      "risk": "Python source topology is not protected by src-specific blocking checks while archived.",
+      "accepted_ceiling": 0,
+      "refactoring_trigger": "Before adding a maintained Python package or material runtime feature, design a src layout and activate source checks."
+    },
+    {
+      "rule": "blocking_ci",
+      "path": ".github/workflows/portfolio-architecture.yml",
+      "reason": "Advisory legacy/fork/hardware preservation avoids noisy CI divergence until formal revival.",
+      "owner": "googa27 Portfolio Project #24",
+      "risk": "Architecture checks are local/advisory rather than automatic on the default branch.",
+      "accepted_ceiling": 0,
+      "refactoring_trigger": "Enable blocking CI before the first new runtime feature, public release, or maintained status claim."
+    },
+    {
+      "rule": "python_module_max_lines",
+      "path": "amaltheafs-cerm_advanced-8589c3df9458/main/greenStreamlit.py",
+      "reason": "Inherited legacy Streamlit script exceeds the 500-line default; Project #24 preservation forbids invasive refactoring in this advisory change.",
+      "owner": "googa27 Portfolio Project #24",
+      "risk": "Large UI/script file has high review locality and regression risk.",
+      "accepted_ceiling": 1014,
+      "refactoring_trigger": "Before adding independent runtime features or exposing the app beyond local historical use, split UI, data loading, and simulation adapters with compatibility tests."
+    }
+  ]
+}
