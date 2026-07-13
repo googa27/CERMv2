@@ -1,60 +1,46 @@
 # AGENTS.md — CERMv2
 
-## Purpose and safety
+Purpose: Project #24 legacy preservation. This repository is classified as `Fork / Legacy` with `legacy` profile and Advisory enforcement. Do not make unsupported maturity, security, maintenance, or production-readiness claims.
 
-`CERMv2` is classified as `Fork / Legacy` under Portfolio Project #24. Preserve public/upstream compatibility, privacy, and evidence boundaries; do not infer maturity beyond executable tests.
+Canonical docs:
+- `README.md` root preservation notice
+- `docs/ARCHITECTURE.yaml` machine-readable source of truth
+- `docs/ARCHITECTURE.md` rationale and maintained-library/revival notes
 
-## Canonical documentation
+Provenance and attribution:
+- Origin owner: `googa27`; issue: https://github.com/googa27/arxiv-implementation-lab/issues/22
+- Upstream/canonical reference: https://github.com/hayleealyssalynanderson/CERMv2.git
+- Preserve history, existing public names, authorship, copyright notices, and file contents. Do not delete, rewrite, or hide inherited material in this preservation change.
 
-- `README.md` where present
-- `docs/ARCHITECTURE.yaml` — machine-readable source of truth
-- `docs/ARCHITECTURE.md` — rationale and extension guidance
+Safety boundaries:
+- License/provenance: No root LICENSE detected in this snapshot; verify upstream/subtree licensing before reuse or redistribution.
+- Data posture: Legacy local CSV/pickle/dump files only; loan, climate, and portfolio data require source, license, classification, and lineage review before reuse.
+- Private-data rule: Do not add private loan books, counterparty identifiers, secrets, credentials, or non-public portfolio data.
+- Security/hardware warning: Legacy Streamlit/notebook code is not hardened; do not expose it to untrusted networks or inputs without a security review.
 
-<!-- PORTFOLIO-CONSTITUTION:START -->
-## Portfolio engineering constitution
+Exact commands:
+- Setup: no supported automated setup is declared; treating runtime setup as a revival gate is required.
+- Tests: no inherited runtime test suite is claimed; run the architecture checker only.
+- Lint/format: no lint/format command is declared.
+- Architecture: `python scripts/check_portfolio_architecture.py`
 
-This repository follows [Portfolio Project #24](https://github.com/users/googa27/projects/24) and [CERMv2 rollout issue](https://github.com/googa27/arxiv-implementation-lab/issues/22). A repository-specific, evidence-backed exception in `docs/ARCHITECTURE.yaml` may specialize a rule; undocumented drift is not an exception.
+Implementation rules for future work:
+- Research upstream/current maintained libraries, standards, datasets, licenses, and security posture before changing runtime code.
+- Prefer maintained libraries; custom code must be limited to domain semantics, adapters, composition, or genuinely missing algorithms with oracle/reference tests.
+- Avoid invasive refactors of inherited code. Record exact no-growth exceptions and compatibility risks before structural changes.
+- Do not introduce generated caches, secrets, private identifiers, restricted data, or fabricated outputs.
+- Keep AI-facing contracts deterministic and local. Add Hermes skills for recurring workflows only; plugin/MCP needs stable public contracts, measured multi-client need, least privilege, and separate verification.
+- Human/notebook interface: Current Streamlit/notebook entry points may be documented as historical examples; typed package/API redesign only after independent revival.
+- Core posture: No core coupling unless formally revived.
 
-### Research and maintained-library preference
+Revival gates:
+- Identify canonical upstream commit and reconcile fork divergence before runtime edits.
+- Resolve license/provenance for code, CSV files, pickle/dump artifacts, and any derived portfolio data.
+- Create a minimal reproducible public-synthetic dataset and oracle numerical checks before changing algorithms.
+- Pin supported Python/dependency versions and add real tests before claiming active maintenance.
+- Perform Streamlit/input/security review before any network-exposed demo.
 
-- Research domain theory, maintained libraries, standards, interfaces, datasets, licenses, adjacent repositories, and probable extension paths before design or implementation.
-- **Maintained-library preference:** use well-maintained libraries for solved algorithms, protocols, parsers, persistence, orchestration, dataframes, numerical methods, and security controls instead of implementing them from scratch. Record capability, selected library, alternatives, maintenance/API/license evidence, adapter boundary, and any custom-code justification.
-- Custom code belongs to domain semantics, composition, adapters/contracts, or genuinely missing algorithms and must be tested against an oracle/reference.
-- Turn reusable findings into maintained Hermes skills and concise support files. Add a plugin or MCP server only when stable CLI/contracts have multiple measured consumers or real interoperable external-tool needs.
-
-### Clean and evolutionary architecture
-
-After the dependency route is sound, apply SOLID, DRY knowledge ownership, suitable design patterns, explicit dependencies, low coupling, cohesive modules, extensibility, maintainability, and technical-debt minimization. Design for probable extensions, not speculative frameworks. Every meaningful change reduces named debt or adds an executable fitness function.
-
-`docs/ARCHITECTURE.yaml` is the machine-readable source of truth. Update it in the same change as architecture, public API, test, CI, data, AI-interface, or exception changes.
-
-- At each Python `src/` level, count immediate runtime `.py` files and package directories, excluding `__init__.py` and architecture/readme/typing metadata. Default maximum: 10. Deepen hierarchy around stable responsibilities instead of widening it.
-- Default Python module maximum: 500 physical lines. Larger legacy files are exact no-growth exceptions with reason, owner/context, risk, accepted ceiling, and refactoring trigger.
-- Keep `tests/unit`, `tests/integration`, `tests/e2e`, and `tests/architecture`; mirror source where useful. Empty suites document their intended boundary and activation trigger.
-- Architecture tests enforce the YAML contract, source fan-out, module-size ratchets, exception metadata, required docs/suites, and repository-specific import/public-API rules.
-
-### Two first-class users
-
-1. **Hermes Agent and compatible agents:** this concise root file, deterministic CLI/public contracts, exact verification commands, and capability discovery are the baseline. Skills encode recurring procedures. Plugins/MCP are optional escalation layers, never substitutes for a stable public interface; mutation tools must be explicit, typed, least-privileged, and separately verifiable.
-2. **Human programmer/notebook user:** provide a typed, documented importable API independent of CLI/UI internals and deterministic public-synthetic notebook examples where the repository is a library. Use only lawful Python protocols: compact `__repr__`, value equality/hash for deeply immutable objects, true collection/context/NumPy protocols, and pure IPython display hooks. Prefer named methods for policy, configuration, I/O, diagnostics, expensive/stateful behavior, or ambiguous mathematics. Test every claimed algebraic law and named-method/operator parity.
-
-### Data and core-repository boundaries
-
-For data-consuming work, design `source registry -> typed acquisition -> immutable Bronze -> canonical Silver -> curated Gold/features -> formulation/model -> governed output -> read-only UI/API/notebook` before implementation. Record grain, units, classification, lineage, quality, freshness/vintage/effective time, identity, replay, and validation.
-
-- `PDP` owns reusable/public data acquisition and products.
-- `financial_problem_formulations` owns general problem/formulation/formula/workflow semantics.
-- `ui_and_artifacts` owns reusable audience-aware rendering and artifact QA.
-- Consume stable public contracts/CLIs, not repository internals. Keep canonical names theoretical/general rather than deal/product-specific.
-
-Repository posture: No core coupling unless formally revived. Data posture: Legacy local files only; no new data platform without revival decision.
-
-### Exact commands
-
-- Setup: `No supported automated setup is currently declared; treat this as a revival gate.`
-- Tests: `No executable test command is currently declared; run the architecture checker only.`
-- Lint/format: `No lint command is currently declared.`
-- Portfolio architecture: `python scripts/check_portfolio_architecture.py`
-
-If a command is declared unavailable, the activation trigger and replacement command belong in `docs/ARCHITECTURE.yaml`; do not fabricate successful output.
-<!-- PORTFOLIO-CONSTITUTION:END -->
+Definition of done for preservation edits:
+- README, AGENTS, `docs/ARCHITECTURE.yaml`, `docs/ARCHITECTURE.md`, and tests agree.
+- `python scripts/check_portfolio_architecture.py` passes.
+- Only advisory governance files are changed unless a separate reviewed revival task authorizes runtime edits.
